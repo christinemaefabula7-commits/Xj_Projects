@@ -682,6 +682,9 @@ canvas{
 
 }
 
+
+.brush-control{display:flex;align-items:center;gap:8px;font-weight:700}.drawing-actions{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px;margin-top:18px}.draft-note{text-align:center;color:var(--text);font-size:14px;margin-top:14px}
+.reading-progress{width:max-content;max-width:90%;margin:0 auto 28px;background:var(--light-green);padding:10px 18px;border-radius:25px;font-weight:800}.story-actions{display:flex;gap:10px;margin-top:18px}.story-actions button{flex:1}.story-reader{padding-bottom:60px}.story-reader[hidden],.challenge[hidden],.story-result[hidden]{display:none}.back-story{border:0;background:transparent;color:var(--navy);font-weight:800;font-size:16px;cursor:pointer;margin:0 0 15px}.reader-card{background:white;border:1px solid var(--line);border-radius:30px;padding:35px;box-shadow:0 15px 35px #0000000b}.reader-badge{display:inline-block;background:var(--yellow);padding:8px 14px;border-radius:18px;font-weight:800;margin-bottom:14px}.reader-card h2{font-size:clamp(32px,5vw,50px);margin-bottom:18px}.reader-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:15px}.reader-actions button{min-width:145px}.reading-hint{background:#fff8dc;border-radius:18px;padding:13px 16px;color:var(--text);line-height:1.5;margin-bottom:22px}.story-text{font-size:20px;line-height:2;color:var(--text);background:#fffdf6;border:2px dashed #eadfca;border-radius:22px;padding:28px}.challenge{margin-top:30px;padding:25px;background:var(--light-purple);border-radius:25px}.challenge-head{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:18px}.challenge h3{font-size:23px;margin-bottom:18px}.question-choices{display:grid;gap:10px}.question-choice{border:2px solid var(--line);background:white;border-radius:18px;padding:14px 16px;text-align:left;font-weight:700;font-size:16px;cursor:pointer}.question-choice.correct{background:var(--light-green);border-color:var(--green)}.question-choice.wrong{background:#ffe4e4;border-color:#f39a9a}.question-feedback{min-height:28px;margin-top:14px;font-weight:800}.next-question{margin-top:10px}.story-result{margin-top:18px;background:white;border-radius:20px;padding:20px;text-align:center;font-size:20px;font-weight:800}.finish-reading{margin-top:25px;width:100%}.story.completed{border:2px solid var(--green)}.story-complete{display:inline-block;margin-top:10px;color:#4f9b55;font-weight:800}@media(max-width:600px){.reader-card{padding:22px}.story-text{font-size:18px;line-height:1.8;padding:20px}.reader-actions button{width:100%}}
 </style>
 </head>
 
@@ -982,121 +985,30 @@ canvas{
      DRAWING
 ========================= -->
 
-<section
-    id="drawing"
-    class="screen">
-
-
-    <div class="page-head">
-
-        <div class="page-icon">
-            🎨
-        </div>
-
-        <h2>
-            Little Art Studio
-        </h2>
-
-        <p>
-            Draw anything you can imagine!
-        </p>
-
-    </div>
-
-
-    <div class="container">
-
-
-        <div class="game-card">
-
-
-            <div class="drawing-tools">
-
-
-                <button
-                    class="color"
-                    style="background:#ff6b6b"
-                    onclick="setColor('#ff6b6b')">
-                </button>
-
-
-                <button
-                    class="color"
-                    style="background:#ffca3a"
-                    onclick="setColor('#ffca3a')">
-                </button>
-
-
-                <button
-                    class="color"
-                    style="background:#70c477"
-                    onclick="setColor('#70c477')">
-                </button>
-
-
-                <button
-                    class="color"
-                    style="background:#5dade2"
-                    onclick="setColor('#5dade2')">
-                </button>
-
-
-                <button
-                    class="color"
-                    style="background:#9576df"
-                    onclick="setColor('#9576df')">
-                </button>
-
-
-                <button
-                    class="color"
-                    style="background:#17243d"
-                    onclick="setColor('#17243d')">
-                </button>
-
-
-                <button
-                    class="tool-btn"
-                    onclick="setEraser()">
-
-                    🧽 Eraser
-
-                </button>
-
-
-                <button
-                    class="tool-btn"
-                    onclick="clearCanvas()">
-
-                    🗑 Clear
-
-                </button>
-
-
-                <label>
-
-                    Brush
-
-                    <input
-                        type="range"
-                        min="2"
-                        max="30"
-                        value="6"
-                        id="brush">
-
-                </label>
-
-
-            </div>
-
-
-            <canvas id="canvas"></canvas>
-
-
-        </div>
-
-    </div>
-
+<section id="drawing" class="screen">
+<div class="page-head"><div class="page-icon">🎨</div><h2>Little Art Studio</h2><p>Draw anything you can imagine!</p></div>
+<div class="container"><div class="game-card">
+<div class="drawing-tools">
+<button class="color" style="background:#ff6b6b" onclick="setColor('#ff6b6b')"></button>
+<button class="color" style="background:#ffca3a" onclick="setColor('#ffca3a')"></button>
+<button class="color" style="background:#70c477" onclick="setColor('#70c477')"></button>
+<button class="color" style="background:#5dade2" onclick="setColor('#5dade2')"></button>
+<button class="color" style="background:#9576df" onclick="setColor('#9576df')"></button>
+<button class="color" style="background:#17243d" onclick="setColor('#17243d')"></button>
+<button class="tool-btn" onclick="setEraser()">🧽 Eraser</button>
+<label class="brush-control">Brush <input type="range" min="2" max="30" value="6" id="brush"></label>
+</div>
+<canvas id="canvas"></canvas>
+<div class="drawing-actions">
+<button class="tool-btn" onclick="undoDrawing()">↶ Undo</button>
+<button class="tool-btn" onclick="redoDrawing()">↷ Redo</button>
+<button class="tool-btn" onclick="saveDraft()">💾 Save Draft</button>
+<button class="tool-btn" onclick="restoreDraft()">📂 Load Draft</button>
+<button class="tool-btn" onclick="clearCanvas()">🗑 Clear</button>
+</div>
+<p class="draft-note">💡 Your draft stays in this browser, so you can come back and continue later.</p>
+<div class="drawing-actions"><button class="primary-btn" onclick="downloadArt()">⬇️ Save Art</button></div>
+</div></div>
 </section>
 
 
@@ -1199,38 +1111,30 @@ canvas{
      READING ROOM
 ========================= -->
 
-<section
-    id="reading"
-    class="screen">
-
-
-    <div class="page-head">
-
-        <div class="page-icon">
-            📚
-        </div>
-
-        <h2>
-            Reading Room
-        </h2>
-
-        <p>
-            Ten tiny stories for
-            curious little readers.
-        </p>
-
-    </div>
-
-
-    <div class="container">
-
-        <div
-            id="stories"
-            class="story-list">
-        </div>
-
-    </div>
-
+<section id="reading" class="screen">
+<div class="page-head"><div class="page-icon">📚</div><h2>Reading Room</h2><p>Choose a story, listen to it, or read it by yourself.</p></div>
+<div class="reading-progress" id="readingProgress">⭐ 0 of 10 stories completed</div>
+<div class="container">
+<div id="stories" class="story-list"></div>
+<div id="storyReader" class="story-reader" hidden>
+<button class="back-story" onclick="closeStory()">← Back to Stories</button>
+<div class="reader-card">
+<div class="reader-badge" id="readerLevel">STORY</div><h2 id="readerTitle"></h2>
+<div class="reader-actions">
+<button class="primary-btn" onclick="readCurrentStory()">🔊 Read Aloud</button>
+<button class="secondary-btn" onclick="stopReading()">⏹ Stop</button>
+<button class="tool-btn" onclick="showSelfReading()">📖 I'll Read</button>
+</div>
+<p class="reading-hint" id="readingHint">Choose “Read Aloud” if you want WonderPlay to read the story, or choose “I'll Read” and read it yourself.</p>
+<div class="story-text" id="storyText"></div>
+<div class="challenge" id="storyChallenge" hidden>
+<div class="challenge-head"><span>🧠 Story Challenge</span><strong id="questionCount">Question 1 of 3</strong></div>
+<h3 id="questionText"></h3><div id="questionChoices" class="question-choices"></div><p id="questionFeedback" class="question-feedback"></p>
+<button class="primary-btn next-question" id="nextQuestionBtn" onclick="nextQuestion()" hidden>Next Question →</button>
+<div id="storyResult" class="story-result" hidden></div>
+</div>
+<button class="primary-btn finish-reading" id="finishReadingBtn" onclick="startChallenge()">🧠 I'm Ready for the Questions</button>
+</div></div></div>
 </section>
 
 
@@ -1696,213 +1600,30 @@ startMemory();
    DRAWING CANVAS
 ========================= */
 
-const canvas =
-    document.getElementById(
-        "canvas"
-    );
-
-const ctx =
-    canvas.getContext("2d");
-
-
-let drawing = false;
-let color = "#17243d";
-let eraser = false;
-
-
-function resizeCanvas(){
-
-    const oldImage =
-        canvas.toDataURL();
-
-
-    canvas.width =
-        canvas.clientWidth *
-        devicePixelRatio;
-
-
-    canvas.height =
-        canvas.clientHeight *
-        devicePixelRatio;
-
-
-    ctx.scale(
-        devicePixelRatio,
-        devicePixelRatio
-    );
-
-
-    const image =
-        new Image();
-
-
-    image.onload = () => {
-
-        ctx.drawImage(
-            image,
-            0,
-            0,
-            canvas.clientWidth,
-            canvas.clientHeight
-        );
-
-    };
-
-
-    image.src = oldImage;
-
-}
-
-
-resizeCanvas();
-
-
-window.addEventListener(
-    "resize",
-    resizeCanvas
-);
-
-
-function position(e){
-
-    const rect =
-        canvas.getBoundingClientRect();
-
-
-    return {
-
-        x:e.clientX - rect.left,
-
-        y:e.clientY - rect.top
-
-    };
-
-}
-
-
-canvas.addEventListener(
-    "pointerdown",
-    e => {
-
-        drawing = true;
-
-
-        const pos =
-            position(e);
-
-
-        ctx.beginPath();
-
-
-        ctx.moveTo(
-            pos.x,
-            pos.y
-        );
-
-    }
-);
-
-
-canvas.addEventListener(
-    "pointermove",
-    e => {
-
-        if(!drawing){
-            return;
-        }
-
-
-        const pos =
-            position(e);
-
-
-        ctx.lineWidth =
-            document.getElementById(
-                "brush"
-            ).value;
-
-
-        ctx.lineCap =
-            "round";
-
-
-        ctx.strokeStyle =
-            eraser
-            ? "#ffffff"
-            : color;
-
-
-        ctx.lineTo(
-            pos.x,
-            pos.y
-        );
-
-
-        ctx.stroke();
-
-    }
-);
-
-
-canvas.addEventListener(
-    "pointerup",
-    () => {
-
-        drawing = false;
-
-    }
-);
-
-
-canvas.addEventListener(
-    "pointerleave",
-    () => {
-
-        drawing = false;
-
-    }
-);
-
-
-function setColor(newColor){
-
-    color = newColor;
-
-    eraser = false;
-
-    toast(
-        "🎨 Color selected!"
-    );
-
-}
-
-
-function setEraser(){
-
-    eraser = true;
-
-    toast(
-        "🧽 Eraser selected!"
-    );
-
-}
-
-
-function clearCanvas(){
-
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-
-    toast(
-        "✨ Canvas cleared!"
-    );
-
-}
+const canvas=document.getElementById("canvas");
+const ctx=canvas.getContext("2d");
+let drawing=false,color="#17243d",eraser=false,history=[],historyIndex=-1;
+function clearDrawingOnly(){const r=canvas.getBoundingClientRect();ctx.clearRect(0,0,r.width,r.height)}
+function setupCanvas(){const r=canvas.getBoundingClientRect(),d=window.devicePixelRatio||1;canvas.width=Math.max(1,r.width*d);canvas.height=Math.max(1,r.height*d);ctx.setTransform(d,0,0,d,0,0)}
+function saveHistory(){const snap=canvas.toDataURL("image/png");if(historyIndex<history.length-1)history=history.slice(0,historyIndex+1);history.push(snap);if(history.length>25)history.shift();historyIndex=history.length-1}
+function restoreHistory(i){if(i<0||i>=history.length)return;const img=new Image();img.onload=()=>{clearDrawingOnly();const r=canvas.getBoundingClientRect();ctx.drawImage(img,0,0,r.width,r.height)};img.src=history[i]}
+function undoDrawing(){if(historyIndex<=0){toast("🌱 Nothing to undo yet!");return}historyIndex--;restoreHistory(historyIndex)}
+function redoDrawing(){if(historyIndex>=history.length-1){toast("✨ Nothing to redo!");return}historyIndex++;restoreHistory(historyIndex)}
+function resizeCanvas(){const old=canvas.toDataURL("image/png"),r=canvas.getBoundingClientRect(),d=window.devicePixelRatio||1;canvas.width=Math.max(1,r.width*d);canvas.height=Math.max(1,r.height*d);ctx.setTransform(d,0,0,d,0,0);const img=new Image();img.onload=()=>ctx.drawImage(img,0,0,r.width,r.height);img.src=old}
+window.addEventListener("resize",resizeCanvas);
+function position(e){const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+canvas.addEventListener("pointerdown",e=>{drawing=true;canvas.setPointerCapture(e.pointerId);const p=position(e);ctx.beginPath();ctx.moveTo(p.x,p.y)});
+canvas.addEventListener("pointermove",e=>{if(!drawing)return;const p=position(e);ctx.lineWidth=Number(document.getElementById("brush").value);ctx.lineCap="round";ctx.lineJoin="round";ctx.strokeStyle=eraser?"#ffffff":color;ctx.lineTo(p.x,p.y);ctx.stroke()});
+function endDrawing(e){if(!drawing)return;drawing=false;try{canvas.releasePointerCapture(e.pointerId)}catch(x){}saveHistory()}
+canvas.addEventListener("pointerup",endDrawing);canvas.addEventListener("pointercancel",endDrawing);
+function setColor(c){color=c;eraser=false;toast("🎨 Color selected!")}
+function setEraser(){eraser=true;toast("🧽 Eraser selected!")}
+function clearCanvas(){clearDrawingOnly();saveHistory();toast("✨ Canvas cleared!")}
+function saveDraft(){localStorage.setItem("wonderplayDrawingDraft",canvas.toDataURL("image/png"));toast("💾 Draft saved! You can come back later.")}
+function restoreDraft(){const saved=localStorage.getItem("wonderplayDrawingDraft");if(!saved){toast("📂 No saved draft yet.");return}const img=new Image();img.onload=()=>{const r=canvas.getBoundingClientRect();clearDrawingOnly();ctx.drawImage(img,0,0,r.width,r.height);saveHistory();toast("🎨 Your draft is back!")};img.src=saved}
+function downloadArt(){const a=document.createElement("a");a.download="wonderplay-my-art.png";a.href=canvas.toDataURL("image/png");a.click();toast("🖼️ Your artwork was saved!")}
+setupCanvas();saveHistory();
+if(localStorage.getItem("wonderplayDrawingDraft"))setTimeout(restoreDraft,200);
 
 
 
@@ -2172,188 +1893,33 @@ loadPattern();
    READING ROOM
 ========================= */
 
-const stories = [
-
-    {
-        title:"Milo and the Little Seed",
-
-        text:"Milo found a tiny seed beside his window. He planted it in a small pot and gave it water every morning. After many days, a little green leaf appeared. Milo smiled because he learned that good things need time to grow."
-    },
-
-
-    {
-        title:"The Blue Umbrella",
-
-        text:"Lia had a bright blue umbrella. One rainy afternoon, she saw a small puppy hiding under a tree. Lia opened her umbrella and shared it with the puppy. Together, they walked home through the rain."
-    },
-
-
-    {
-        title:"Nina's Missing Crayon",
-
-        text:"Nina wanted to draw a rainbow, but she could not find her blue crayon. She looked under the table and inside her bag. Her friend Sam helped her search. They found the crayon beside the window and finished the rainbow together."
-    },
-
-
-    {
-        title:"The Brave Little Ant",
-
-        text:"A little ant saw a large crumb on the ground. It was too heavy to carry alone. The ant called its friends. Together, they pushed the crumb all the way home. The ants learned that teamwork can make hard things easier."
-    },
-
-
-    {
-        title:"The Cloud That Looked Like a Bear",
-
-        text:"Tom lay on the grass and watched the clouds. One cloud looked like a rabbit. Another looked like a fish. Then he saw a big cloud shaped like a bear. Tom laughed and imagined the bear was dancing in the sky."
-    },
-
-
-    {
-        title:"Pia's Tiny Garden",
-
-        text:"Pia planted flowers in her backyard. She planted yellow flowers, pink flowers, and one tiny purple flower. Every afternoon, she checked the plants. Soon, butterflies visited her garden. Pia felt happy because her little garden had become a home for them."
-    },
-
-
-    {
-        title:"The Lost Star",
-
-        text:"One evening, a little star fell behind a tall hill. The moon noticed that the star was missing. She shone her light across the hill. The little star followed the light and returned to the night sky."
-    },
-
-
-    {
-        title:"Ben's Big Idea",
-
-        text:"Ben wanted to build something special. He collected cardboard, paper, and tape. After many tries, he made a small cardboard house. It was not perfect, but Ben was proud because he made it with his own hands."
-    },
-
-
-    {
-        title:"The Friendly Fish",
-
-        text:"A small fish named Finn lived near a coral reef. Every day, he greeted the other fish. One day, a new fish arrived and felt lonely. Finn invited the new fish to play. Soon, they became good friends."
-    },
-
-
-    {
-        title:"The Magic Library",
-
-        text:"Ella loved visiting the library. One afternoon, she opened a book about forests. As she read, she imagined tall trees, singing birds, and tiny animals. Ella discovered that books can take us to wonderful places without leaving our chair."
-    }
-
+const stories=[
+{title:"Milo and the Little Seed",level:"LEVEL 1 • 2 MIN",icon:"🌱",text:"Milo found a tiny seed beside his window. He planted it in a small pot and gave it water every morning. After many days, a little green leaf appeared. Milo smiled because he learned that good things need time to grow.",questions:[{q:"What did Milo find?",choices:["A tiny seed","A blue shoe","A little fish"],answer:0},{q:"What did Milo do every morning?",choices:["He played outside.","He gave the seed water.","He picked the leaf."],answer:1},{q:"What lesson did Milo learn?",choices:["Good things need time to grow.","Plants grow in one day.","Seeds do not need care."],answer:0}]},
+{title:"The Blue Umbrella",level:"LEVEL 1 • 2 MIN",icon:"☔",text:"Lia had a bright blue umbrella. One rainy afternoon, she saw a small puppy hiding under a tree. Lia opened her umbrella and shared it with the puppy. Together, they walked home through the rain.",questions:[{q:"What color was Lia's umbrella?",choices:["Red","Blue","Green"],answer:1},{q:"Where was the puppy hiding?",choices:["Under a tree","Inside a shop","Under a bed"],answer:0},{q:"What did Lia do?",choices:["She left the puppy.","She shared her umbrella.","She ran away."],answer:1}]},
+{title:"Nina's Missing Crayon",level:"LEVEL 1 • 2 MIN",icon:"🖍️",text:"Nina wanted to draw a rainbow, but she could not find her blue crayon. She looked under the table and inside her bag. Her friend Sam helped her search. They found the crayon beside the window and finished the rainbow together.",questions:[{q:"What was Nina trying to draw?",choices:["A house","A rainbow","A tree"],answer:1},{q:"Who helped Nina?",choices:["Sam","Milo","Finn"],answer:0},{q:"Where was the blue crayon?",choices:["Under the table","Inside her bag","Beside the window"],answer:2}]},
+{title:"The Brave Little Ant",level:"LEVEL 1 • 2 MIN",icon:"🐜",text:"A little ant saw a large crumb on the ground. It was too heavy to carry alone. The ant called its friends. Together, they pushed the crumb all the way home. The ants learned that teamwork can make hard things easier.",questions:[{q:"What did the ant find?",choices:["A large crumb","A big leaf","A red apple"],answer:0},{q:"Why did the ant call its friends?",choices:["It wanted to play.","The crumb was too heavy.","It was lost."],answer:1},{q:"What did the ants learn?",choices:["Teamwork helps.","Crumbs are toys.","Friends make work harder."],answer:0}]},
+{title:"The Cloud That Looked Like a Bear",level:"LEVEL 1 • 2 MIN",icon:"☁️",text:"Tom lay on the grass and watched the clouds. One cloud looked like a rabbit. Another looked like a fish. Then he saw a big cloud shaped like a bear. Tom laughed and imagined the bear was dancing in the sky.",questions:[{q:"Where was Tom?",choices:["On the grass","In a boat","At school"],answer:0},{q:"What did one cloud look like?",choices:["A rabbit","A dog","A house"],answer:0},{q:"What did Tom imagine the bear doing?",choices:["Sleeping","Dancing","Swimming"],answer:1}]},
+{title:"Pia's Tiny Garden",level:"LEVEL 2 • 3 MIN",icon:"🌷",text:"Pia planted flowers in her backyard. She planted yellow flowers, pink flowers, and one tiny purple flower. Every afternoon, she checked the plants. Soon, butterflies visited her garden. Pia felt happy because her little garden had become a home for them.",questions:[{q:"Where did Pia plant the flowers?",choices:["In her backyard","At school","Beside a river"],answer:0},{q:"What visited the garden?",choices:["Birds","Butterflies","Puppies"],answer:1},{q:"Why was Pia happy?",choices:["Her garden became a home for butterflies.","She found a toy.","It started raining."],answer:0}]},
+{title:"The Lost Star",level:"LEVEL 2 • 3 MIN",icon:"⭐",text:"One evening, a little star fell behind a tall hill. The moon noticed that the star was missing. She shone her light across the hill. The little star followed the light and returned to the night sky.",questions:[{q:"Where did the little star fall?",choices:["Behind a tall hill","Into the sea","Inside a tree"],answer:0},{q:"Who noticed the star was missing?",choices:["The sun","The moon","A cloud"],answer:1},{q:"How did the star return?",choices:["It followed the moon's light.","It flew with a bird.","It climbed a tree."],answer:0}]},
+{title:"Ben's Big Idea",level:"LEVEL 2 • 3 MIN",icon:"🏠",text:"Ben wanted to build something special. He collected cardboard, paper, and tape. After many tries, he made a small cardboard house. It was not perfect, but Ben was proud because he made it with his own hands.",questions:[{q:"What did Ben collect?",choices:["Cardboard, paper, and tape","Stones and water","Books and crayons"],answer:0},{q:"What did Ben build?",choices:["A robot","A cardboard house","A kite"],answer:1},{q:"Why was Ben proud?",choices:["He bought it.","He made it himself.","It was perfect."],answer:1}]},
+{title:"The Friendly Fish",level:"LEVEL 2 • 3 MIN",icon:"🐟",text:"A small fish named Finn lived near a coral reef. Every day, he greeted the other fish. One day, a new fish arrived and felt lonely. Finn invited the new fish to play. Soon, they became good friends.",questions:[{q:"What was the fish's name?",choices:["Finn","Ben","Tom"],answer:0},{q:"How did the new fish feel?",choices:["Excited","Lonely","Angry"],answer:1},{q:"What did Finn do?",choices:["He invited the fish to play.","He ignored the fish.","He went home."],answer:0}]},
+{title:"The Magic Library",level:"LEVEL 2 • 3 MIN",icon:"📚",text:"Ella loved visiting the library. One afternoon, she opened a book about forests. As she read, she imagined tall trees, singing birds, and tiny animals. Ella discovered that books can take us to wonderful places without leaving our chair.",questions:[{q:"Where did Ella love to go?",choices:["The library","The beach","The park"],answer:0},{q:"What was her book about?",choices:["Cars","Forests","Cooking"],answer:1},{q:"What did Ella discover?",choices:["Books can take us to wonderful places.","Books are only for adults.","Libraries are boring."],answer:0}]}
 ];
-
-
-function loadStories(){
-
-    const box =
-        document.getElementById(
-            "stories"
-        );
-
-
-    stories.forEach(
-        (story,index) => {
-
-            const article =
-                document.createElement(
-                    "article"
-                );
-
-
-            article.className =
-                "story";
-
-
-            article.innerHTML = `
-
-                <span class="story-number">
-                    Story ${index + 1}
-                </span>
-
-                <h3>
-                    ${story.title}
-                </h3>
-
-                <p>
-                    ${story.text}
-                </p>
-
-                <button
-                    class="read-btn"
-                    onclick="readStory(${index})">
-
-                    🔊 Read Aloud
-
-                </button>
-
-            `;
-
-
-            box.appendChild(
-                article
-            );
-
-        }
-    );
-
-}
-
-
-function readStory(index){
-
-    const story =
-        stories[index];
-
-
-    if(
-        "speechSynthesis"
-        in window
-    ){
-
-        speechSynthesis.cancel();
-
-
-        const speech =
-            new SpeechSynthesisUtterance(
-                story.title +
-                ". " +
-                story.text
-            );
-
-
-        speech.rate = .85;
-
-        speech.pitch = 1.1;
-
-
-        speechSynthesis.speak(
-            speech
-        );
-
-
-        toast(
-            "🔊 Reading " +
-            story.title
-        );
-
-    }
-    else{
-
-        toast(
-            "Your browser does not support Read Aloud."
-        );
-
-    }
-
-}
-
-
+let currentStoryIndex=0,currentQuestion=0,currentStoryScore=0;
+function completedStories(){return JSON.parse(localStorage.getItem("wonderplayCompletedStories")||"[]")}
+function updateReadingProgress(){document.getElementById("readingProgress").textContent=`⭐ ${completedStories().length} of ${stories.length} stories completed`}
+function loadStories(){const box=document.getElementById("stories");box.innerHTML="";const done=completedStories();stories.forEach((story,i)=>{const a=document.createElement("article");a.className="story"+(done.includes(i)?" completed":"");a.innerHTML=`<span class="story-number">Story ${i+1} · ${story.level}</span><h3>${story.icon} ${story.title}</h3><p>Open this story to listen, read it yourself, and answer 3 fun questions.</p>${done.includes(i)?'<span class="story-complete">✓ Completed</span>':''}<div class="story-actions"><button class="read-btn" onclick="openStory(${i})">📖 Open Story</button></div>`;box.appendChild(a)});updateReadingProgress()}
+function openStory(i){currentStoryIndex=i;const story=stories[i];document.getElementById("stories").style.display="none";document.getElementById("storyReader").hidden=false;document.getElementById("readerLevel").textContent=`STORY ${i+1} · ${story.level}`;document.getElementById("readerTitle").textContent=`${story.icon} ${story.title}`;document.getElementById("storyText").textContent=story.text;document.getElementById("storyChallenge").hidden=true;document.getElementById("finishReadingBtn").hidden=false;document.getElementById("readingHint").textContent="Choose “Read Aloud” if you want WonderPlay to read the story, or choose “I'll Read” and read it yourself.";window.scrollTo({top:0,behavior:"smooth"})}
+function showSelfReading(){stopReading();document.getElementById("readingHint").textContent="📖 Take your time! Read the story by yourself, then answer the questions when you are ready.";toast("📖 Happy reading!")}
+function readCurrentStory(){const story=stories[currentStoryIndex];if("speechSynthesis" in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(story.title+". "+story.text);u.rate=.85;u.pitch=1.1;u.onstart=()=>document.getElementById("readingHint").textContent="🔊 WonderPlay is reading. Follow along with the words!";u.onend=()=>document.getElementById("readingHint").textContent="✨ Finished! You can read it yourself or answer the story questions.";speechSynthesis.speak(u);toast("🔊 Reading "+story.title)}else toast("Your browser does not support Read Aloud.")}
+function stopReading(){if("speechSynthesis" in window)speechSynthesis.cancel();document.getElementById("readingHint").textContent="📖 You can continue reading the story yourself."}
+function startChallenge(){stopReading();currentQuestion=0;currentStoryScore=0;document.getElementById("finishReadingBtn").hidden=true;document.getElementById("storyChallenge").hidden=false;document.getElementById("storyResult").hidden=true;showQuestion()}
+function showQuestion(){const q=stories[currentStoryIndex].questions[currentQuestion];document.getElementById("questionCount").textContent=`Question ${currentQuestion+1} of 3`;document.getElementById("questionText").textContent=q.q;const box=document.getElementById("questionChoices");box.innerHTML="";document.getElementById("questionFeedback").textContent="";document.getElementById("nextQuestionBtn").hidden=true;q.choices.forEach((choice,i)=>{const b=document.createElement("button");b.className="question-choice";b.textContent=choice;b.onclick=()=>answerQuestion(i,b);box.appendChild(b)})}
+function answerQuestion(i,clicked){const q=stories[currentStoryIndex].questions[currentQuestion];const buttons=document.querySelectorAll(".question-choice");buttons.forEach(b=>b.disabled=true);if(i===q.answer){currentStoryScore++;clicked.classList.add("correct");document.getElementById("questionFeedback").textContent="🎉 Correct! Great thinking!"}else{clicked.classList.add("wrong");buttons[q.answer].classList.add("correct");document.getElementById("questionFeedback").textContent="🌱 Nice try! The green answer is correct."}document.getElementById("nextQuestionBtn").hidden=false}
+function nextQuestion(){currentQuestion++;if(currentQuestion>=3){finishStory();return}showQuestion()}
+function finishStory(){const done=completedStories();if(!done.includes(currentStoryIndex)){done.push(currentStoryIndex);localStorage.setItem("wonderplayCompletedStories",JSON.stringify(done))}document.getElementById("questionChoices").innerHTML="";document.getElementById("questionFeedback").textContent="";document.getElementById("nextQuestionBtn").hidden=true;const r=document.getElementById("storyResult");r.hidden=false;const msg=currentStoryScore===3?"🏆 Perfect! You got all 3!":currentStoryScore===2?"🌟 Great job! You got 2 out of 3.":currentStoryScore===1?"💚 Good try! Keep practicing.":"🌱 Keep going! Every story helps you learn.";r.innerHTML=`${msg}<br><small>Score: ${currentStoryScore}/3</small><br><br><button class="primary-btn" onclick="closeStory()">📚 Back to Reading Room</button>`;updateReadingProgress()}
+function closeStory(){stopReading();document.getElementById("storyReader").hidden=true;document.getElementById("stories").style.display="grid";loadStories();window.scrollTo({top:0,behavior:"smooth"})}
 loadStories();
-
-
 </script>
 
 </body>

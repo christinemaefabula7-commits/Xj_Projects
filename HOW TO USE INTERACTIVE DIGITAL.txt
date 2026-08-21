@@ -1,0 +1,26 @@
+HOW TO USE YOUR INTERACTIVE DIGITAL CARD TEMPLATE
+
+Thank you so much for purchasing this template! Please follow these simple steps to customize your digital greeting card:
+
+1. How to Preview the Card:
+Make sure that ForUCard.html, card.css, and the image folder are all saved inside the same folder.
+Double-click the ForUCard.html file to open it in your web browser (Chrome, Edge, or Safari) and see your interactive card in action.
+
+2. How to Edit Text and Names:
+Right-click the ForUCard.html file.
+Select "Open with" -> "Notepad" (Windows) or "TextEdit" (Mac).
+Look for the text you want to change (such as "To My Billy", "Annie", or the main message).
+Type your desired text, then save your changes by pressing Ctrl + S (Windows) or Cmd + S (Mac).
+Refresh your web browser to see the updates!
+
+3. How to Replace Photos:
+Open the image folder.
+Replace the existing image files with your own photos.
+
+Important: Make sure your new photos have the exact same file name as the original ones (for example: if the original is photo.jpg, name your new photo photo.jpg) so you don't have to touch the code.
+
+
+Need Help or a Custom Link?🔗
+If you want a ready-to-use live link and prefer me to customize everything for you, feel free to send me a message for a Custom Commission Service!
+
+Happy gifting! ✨

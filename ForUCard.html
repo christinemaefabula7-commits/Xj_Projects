@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sweet Greeting Card</title>
+
+    <link rel="stylesheet" href="card.css">
+</head>
+
+<body>
+
+
+    <!-- FIREFLIES -->
+    <div class="fireflies" id="fireflies"></div>
+
+
+    <!-- CARD -->
+    <main class="card">
+
+
+        <!-- FRONT -->
+        <section id="front">
+
+            <div class="top-flower">💐</div>
+
+            <div class="bloom-flower" onclick="openCard()">
+                💌
+            </div>
+
+            <h1>
+                To My Billy🌸
+            </h1>
+
+            <p class="subtitle">
+                A little message made especially for you.
+            </p>
+
+            <p class="tap">
+                Tap the envelope to open love letter
+            </p>
+
+        </section>
+
+
+
+        <!-- MESSAGE -->
+        <section class="message" id="message">
+
+            <div class="small-flower">
+                🌷
+            </div>
+
+            <h2>
+                To my dear Billy🌸,
+            </h2>
+
+            <p>
+                I just wanted to remind you that
+                you are appreciated more than you know.
+                Your presence makes ordinary moments
+                a little brighter. ✨
+            </p>
+
+            <p>
+                I hope you always remember to smile,
+                enjoy the little things, and keep being
+                the wonderful person that you are. 🌸
+            </p>
+
+            <p class="from">
+                With lots of love,<br>
+                <b>Annie 💗</b>
+            </p>
+
+            <button onclick="celebrate()">
+                Celebrate! 🎉
+            </button>
+
+
+            <!-- GIFT BUTTON -->
+
+            <div class="gift-button-area" id="giftButton">
+
+                <p>
+                    Wait... there's one more little surprise. 👀
+                </p>
+
+                <button
+                    class="gift-button"
+                    onclick="openGift()"
+                >
+                    🎁 Open Your Gift
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- GIFT -->
+        <section class="gift" id="gift">
+
+            <p class="gift-title">
+                A glimpse of our cheezy moments... ✨
+            </p>
+
+            <h2>
+                Thank you for being the flower on my empty garden 🌷
+            </h2>
+
+
+            <!-- BOUQUET -->
+
+            <div class="bouquet">
+
+                <span>🌷</span>
+                <span>🌷</span>
+                <span>🌷</span>
+                <span>🌷</span>
+                <span>🌷</span>
+
+            </div>
+
+
+            <!-- PHOTO -->
+
+            <div class="photo-frame">
+
+                <img
+                    src="image/us.jpeg"
+                    alt="Our special memory"
+                >
+
+                <p>
+                    our little memory ♡
+                </p>
+
+            </div>
+
+
+            <h3>
+                Forever be your bestfriend and sister. 💗
+            </h3>
+
+            <p class="memory">
+                No matter where life takes us,
+                I hope this little moment reminds
+                you of the people and memories
+                that made you smile.
+            </p>
+
+            <p class="from">
+                — With love 🌷
+            </p>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- JAVASCRIPT -->
+    <script src="card.js"></script>
+
+</body>
+</html>
