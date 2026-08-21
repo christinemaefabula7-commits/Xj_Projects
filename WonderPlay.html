@@ -1,0 +1,2361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WonderPlay | Learn, Play & Create</title>
+
+<style>
+
+/* =========================
+   BASIC SETUP
+========================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --cream:#fffbea;
+    --white:#ffffff;
+    --navy:#17243d;
+    --text:#49617e;
+    --green:#70c477;
+    --light-green:#dff0d2;
+    --yellow:#ffe99b;
+    --orange:#f39a36;
+    --pink:#ffdede;
+    --purple:#9575dc;
+    --light-purple:#eee6ff;
+    --line:#e7dfcc;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--cream);
+    color:var(--navy);
+    min-height:100vh;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+header{
+    height:76px;
+    background:rgba(255,255,255,.92);
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 4%;
+    position:sticky;
+    top:0;
+    z-index:100;
+    backdrop-filter:blur(10px);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:26px;
+    font-weight:800;
+}
+
+.logo-icon{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:var(--orange);
+    display:grid;
+    place-items:center;
+    font-size:25px;
+    box-shadow:0 5px 12px #0001;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.nav-btn{
+    border:0;
+    background:transparent;
+    padding:13px 15px;
+    border-radius:25px;
+    font-size:15px;
+    font-weight:700;
+    color:var(--navy);
+    cursor:pointer;
+    transition:.2s;
+}
+
+.nav-btn:hover,
+.nav-btn.active{
+    background:var(--yellow);
+}
+
+.menu{
+    display:none;
+    border:0;
+    background:var(--yellow);
+    border-radius:12px;
+    padding:9px 13px;
+    font-size:22px;
+    cursor:pointer;
+}
+
+
+/* =========================
+   SCREEN SYSTEM
+========================= */
+
+.screen{
+    display:none;
+    min-height:calc(100vh - 76px);
+    animation:screenIn .35s ease;
+}
+
+.screen.active{
+    display:block;
+}
+
+@keyframes screenIn{
+    from{
+        opacity:0;
+        transform:translateY(12px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+.home{
+    background:
+        radial-gradient(
+            circle at 12% 20%,
+            #ffe99b55,
+            transparent 23%
+        ),
+        radial-gradient(
+            circle at 90% 25%,
+            #ffdede66,
+            transparent 25%
+        ),
+        var(--cream);
+}
+
+.hero{
+    min-height:calc(100vh - 76px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:50px 20px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero-badge{
+    display:inline-block;
+    background:var(--light-green);
+    padding:9px 17px;
+    border-radius:20px;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(48px,7vw,88px);
+    line-height:.98;
+    letter-spacing:-3px;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:var(--green);
+}
+
+.hero p{
+    max-width:720px;
+    margin:auto;
+    color:var(--text);
+    font-size:20px;
+    line-height:1.6;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.primary-btn,
+.secondary-btn{
+    border:0;
+    border-radius:30px;
+    padding:15px 27px;
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.primary-btn{
+    background:var(--green);
+    color:var(--navy);
+    box-shadow:0 7px 15px #70c47744;
+}
+
+.secondary-btn{
+    background:white;
+    color:var(--navy);
+    border:1px solid var(--line);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover{
+    transform:translateY(-3px);
+}
+
+.hero-games{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:45px;
+}
+
+.mini-card{
+    width:125px;
+    padding:17px;
+    background:white;
+    border:1px solid var(--line);
+    border-radius:22px;
+    box-shadow:0 8px 20px #0000000b;
+}
+
+.mini-card div{
+    font-size:34px;
+    margin-bottom:8px;
+}
+
+.mini-card small{
+    font-weight:700;
+}
+
+
+/* =========================
+   PAGE HEAD
+========================= */
+
+.page-head{
+    text-align:center;
+    padding:55px 20px 32px;
+}
+
+.page-icon{
+    font-size:52px;
+    margin-bottom:12px;
+}
+
+.page-head h2{
+    font-size:clamp(40px,6vw,64px);
+    margin-bottom:12px;
+}
+
+.page-head p{
+    color:var(--text);
+    font-size:18px;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:min(960px,92%);
+    margin:auto;
+}
+
+.game-card{
+    background:white;
+    border:1px solid var(--line);
+    border-radius:30px;
+    padding:30px;
+    box-shadow:0 15px 35px #0000000b;
+    margin-bottom:50px;
+}
+
+.game-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.badge{
+    background:var(--yellow);
+    padding:9px 17px;
+    border-radius:20px;
+    font-weight:800;
+}
+
+.score{
+    background:var(--pink);
+    padding:9px 17px;
+    border-radius:20px;
+    font-weight:800;
+}
+
+.center{
+    text-align:center;
+}
+
+
+/* =========================
+   MEMORY GAME
+========================= */
+
+.memory-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+    max-width:600px;
+    margin:auto;
+}
+
+.memory-card{
+    aspect-ratio:1;
+    border:0;
+    border-radius:22px;
+    background:var(--purple);
+    color:white;
+    font-size:38px;
+    cursor:pointer;
+    box-shadow:0 7px 10px #0002;
+    transition:.2s;
+}
+
+.memory-card:hover{
+    transform:translateY(-4px);
+}
+
+.memory-card.open{
+    background:var(--light-purple);
+    color:var(--navy);
+}
+
+.memory-card.matched{
+    background:var(--light-green);
+    color:var(--navy);
+}
+
+.reset-btn{
+    margin-top:25px;
+    padding:12px 22px;
+    border:0;
+    border-radius:25px;
+    background:var(--navy);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+
+/* =========================
+   DRAWING
+========================= */
+
+.drawing-tools{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:18px;
+}
+
+.color{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:3px solid white;
+    outline:1px solid #ddd;
+    cursor:pointer;
+}
+
+.tool-btn{
+    padding:9px 15px;
+    border:1px solid var(--line);
+    background:white;
+    border-radius:20px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+canvas{
+    width:100%;
+    height:440px;
+    background:white;
+    border:3px dashed #d9cfba;
+    border-radius:22px;
+    cursor:crosshair;
+    touch-action:none;
+}
+
+
+/* =========================
+   BRAIN BOOST
+========================= */
+
+.pattern{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin:30px auto;
+}
+
+.pattern-item{
+    width:82px;
+    height:82px;
+    border-radius:22px;
+    background:var(--light-green);
+    display:grid;
+    place-items:center;
+    font-size:38px;
+}
+
+.pattern-item.question{
+    background:var(--purple);
+    color:white;
+}
+
+.answers{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.answer{
+    width:100px;
+    height:80px;
+    border:2px solid var(--line);
+    border-radius:20px;
+    background:white;
+    font-size:34px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.answer:hover{
+    transform:translateY(-4px);
+    border-color:var(--purple);
+}
+
+.feedback{
+    min-height:30px;
+    margin-top:20px;
+    text-align:center;
+    font-size:19px;
+    font-weight:800;
+}
+
+
+/* =========================
+   READING ROOM
+========================= */
+
+.story-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    padding-bottom:50px;
+}
+
+.story{
+    background:white;
+    border:1px solid var(--line);
+    border-radius:25px;
+    padding:25px;
+    transition:.2s;
+}
+
+.story:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 25px #0000000c;
+}
+
+.story-number{
+    display:inline-block;
+    background:var(--light-green);
+    padding:7px 12px;
+    border-radius:15px;
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.story h3{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.story p{
+    color:var(--text);
+    line-height:1.7;
+}
+
+.read-btn{
+    margin-top:15px;
+    border:0;
+    background:var(--yellow);
+    padding:10px 16px;
+    border-radius:20px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+
+/* =========================
+   WHY KIDS LOVE IT
+========================= */
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    padding-bottom:60px;
+}
+
+.why-card{
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    border:1px solid var(--line);
+    text-align:center;
+}
+
+.why-card div{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.why-card h3{
+    margin-bottom:10px;
+}
+
+.why-card p{
+    color:var(--text);
+    line-height:1.6;
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+    position:fixed;
+    bottom:25px;
+    left:50%;
+    transform:translate(-50%,100px);
+    background:var(--navy);
+    color:white;
+    padding:13px 22px;
+    border-radius:25px;
+    font-weight:bold;
+    z-index:300;
+    transition:.3s;
+}
+
+.toast.show{
+    transform:translate(-50%,0);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    .nav-btn{
+        padding:11px 9px;
+        font-size:14px;
+    }
+
+}
+
+@media(max-width:800px){
+
+    header{
+        height:70px;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    nav{
+        display:none;
+        position:absolute;
+        top:70px;
+        left:0;
+        right:0;
+        background:white;
+        padding:15px;
+        border-bottom:1px solid var(--line);
+        flex-direction:column;
+    }
+
+    nav.open{
+        display:flex;
+    }
+
+    .nav-btn{
+        width:100%;
+    }
+
+    .story-list,
+    .why-grid{
+        grid-template-columns:1fr;
+    }
+
+    .memory-grid{
+        gap:8px;
+    }
+
+    .memory-card{
+        font-size:27px;
+        border-radius:15px;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .logo{
+        font-size:21px;
+    }
+
+    .logo-icon{
+        width:40px;
+        height:40px;
+        font-size:21px;
+    }
+
+    .game-card{
+        padding:20px;
+        border-radius:22px;
+    }
+
+    .pattern-item{
+        width:62px;
+        height:62px;
+        font-size:29px;
+    }
+
+    .answer{
+        width:75px;
+        height:65px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🦁
+        </div>
+
+        WonderPlay
+
+    </div>
+
+
+    <button
+        class="menu"
+        onclick="toggleMenu()">
+
+        ☰
+
+    </button>
+
+
+    <nav id="nav">
+
+        <button
+            class="nav-btn active"
+            data-screen="home"
+            onclick="showScreen('home')">
+
+            Home
+
+        </button>
+
+
+        <button
+            class="nav-btn"
+            data-screen="memory"
+            onclick="showScreen('memory')">
+
+            Memory Game
+
+        </button>
+
+
+        <button
+            class="nav-btn"
+            data-screen="drawing"
+            onclick="showScreen('drawing')">
+
+            Drawing
+
+        </button>
+
+
+        <button
+            class="nav-btn"
+            data-screen="brain"
+            onclick="showScreen('brain')">
+
+            Brain Boost
+
+        </button>
+
+
+        <button
+            class="nav-btn"
+            data-screen="reading"
+            onclick="showScreen('reading')">
+
+            Reading Room
+
+        </button>
+
+
+        <button
+            class="nav-btn"
+            data-screen="why"
+            onclick="showScreen('why')">
+
+            Why Kids Love It
+
+        </button>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =========================
+     HOME
+========================= -->
+
+<section
+    id="home"
+    class="screen active home">
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+
+            <div class="hero-badge">
+
+                ✨ Learning can be fun!
+
+            </div>
+
+
+            <h1>
+
+                Where little minds<br>
+
+                <span>play & grow.</span>
+
+            </h1>
+
+
+            <p>
+
+                Welcome to WonderPlay —
+                a colorful little world where
+                kids can play games, create art,
+                solve puzzles, and enjoy stories.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+
+                <button
+                    class="primary-btn"
+                    onclick="showScreen('memory')">
+
+                    🧠 Start Playing
+
+                </button>
+
+
+                <button
+                    class="secondary-btn"
+                    onclick="showScreen('reading')">
+
+                    📚 Read a Story
+
+                </button>
+
+
+            </div>
+
+
+            <div class="hero-games">
+
+
+                <div class="mini-card">
+
+                    <div>🧠</div>
+
+                    <small>
+                        Memory
+                    </small>
+
+                </div>
+
+
+                <div class="mini-card">
+
+                    <div>🎨</div>
+
+                    <small>
+                        Create
+                    </small>
+
+                </div>
+
+
+                <div class="mini-card">
+
+                    <div>🧩</div>
+
+                    <small>
+                        Think
+                    </small>
+
+                </div>
+
+
+                <div class="mini-card">
+
+                    <div>📖</div>
+
+                    <small>
+                        Read
+                    </small>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     MEMORY GAME
+========================= -->
+
+<section
+    id="memory"
+    class="screen">
+
+
+    <div class="page-head">
+
+        <div class="page-icon">
+            🧠
+        </div>
+
+        <h2>
+            Memory Match
+        </h2>
+
+        <p>
+            Find the matching animals
+            and train your memory!
+        </p>
+
+    </div>
+
+
+    <div class="container">
+
+
+        <div class="game-card">
+
+
+            <div class="game-top">
+
+                <div class="badge">
+                    Game 1
+                </div>
+
+                <div class="score">
+                    Moves:
+                    <span id="moves">
+                        0
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div
+                id="memoryGrid"
+                class="memory-grid">
+            </div>
+
+
+            <div class="center">
+
+                <button
+                    class="reset-btn"
+                    onclick="startMemory()">
+
+                    🔄 Play Again
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     DRAWING
+========================= -->
+
+<section
+    id="drawing"
+    class="screen">
+
+
+    <div class="page-head">
+
+        <div class="page-icon">
+            🎨
+        </div>
+
+        <h2>
+            Little Art Studio
+        </h2>
+
+        <p>
+            Draw anything you can imagine!
+        </p>
+
+    </div>
+
+
+    <div class="container">
+
+
+        <div class="game-card">
+
+
+            <div class="drawing-tools">
+
+
+                <button
+                    class="color"
+                    style="background:#ff6b6b"
+                    onclick="setColor('#ff6b6b')">
+                </button>
+
+
+                <button
+                    class="color"
+                    style="background:#ffca3a"
+                    onclick="setColor('#ffca3a')">
+                </button>
+
+
+                <button
+                    class="color"
+                    style="background:#70c477"
+                    onclick="setColor('#70c477')">
+                </button>
+
+
+                <button
+                    class="color"
+                    style="background:#5dade2"
+                    onclick="setColor('#5dade2')">
+                </button>
+
+
+                <button
+                    class="color"
+                    style="background:#9576df"
+                    onclick="setColor('#9576df')">
+                </button>
+
+
+                <button
+                    class="color"
+                    style="background:#17243d"
+                    onclick="setColor('#17243d')">
+                </button>
+
+
+                <button
+                    class="tool-btn"
+                    onclick="setEraser()">
+
+                    🧽 Eraser
+
+                </button>
+
+
+                <button
+                    class="tool-btn"
+                    onclick="clearCanvas()">
+
+                    🗑 Clear
+
+                </button>
+
+
+                <label>
+
+                    Brush
+
+                    <input
+                        type="range"
+                        min="2"
+                        max="30"
+                        value="6"
+                        id="brush">
+
+                </label>
+
+
+            </div>
+
+
+            <canvas id="canvas"></canvas>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     BRAIN BOOST
+========================= -->
+
+<section
+    id="brain"
+    class="screen">
+
+
+    <div class="page-head">
+
+        <div class="page-icon">
+            🧩
+        </div>
+
+        <h2>
+            Pattern Detective
+        </h2>
+
+        <p>
+            Find the rule and choose
+            what comes next!
+        </p>
+
+    </div>
+
+
+    <div class="container">
+
+
+        <div class="game-card">
+
+
+            <div class="game-top">
+
+                <div class="badge">
+                    Game 3
+                </div>
+
+                <div class="score">
+
+                    Score:
+                    <span id="brainScore">
+                        0
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="center">
+
+                <h2>
+                    Spot the Pattern!
+                </h2>
+
+                <p
+                    style="margin-top:10px;color:#49617e">
+
+                    Which piece should
+                    come next?
+
+                </p>
+
+            </div>
+
+
+            <div
+                id="pattern"
+                class="pattern">
+            </div>
+
+
+            <div
+                id="answers"
+                class="answers">
+            </div>
+
+
+            <div
+                id="feedback"
+                class="feedback">
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     READING ROOM
+========================= -->
+
+<section
+    id="reading"
+    class="screen">
+
+
+    <div class="page-head">
+
+        <div class="page-icon">
+            📚
+        </div>
+
+        <h2>
+            Reading Room
+        </h2>
+
+        <p>
+            Ten tiny stories for
+            curious little readers.
+        </p>
+
+    </div>
+
+
+    <div class="container">
+
+        <div
+            id="stories"
+            class="story-list">
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     WHY KIDS LOVE IT
+========================= -->
+
+<section
+    id="why"
+    class="screen">
+
+
+    <div class="page-head">
+
+        <div class="page-icon">
+            💚
+        </div>
+
+        <h2>
+            Why Kids Love It
+        </h2>
+
+        <p>
+            Learning doesn't have
+            to feel like homework.
+        </p>
+
+    </div>
+
+
+    <div class="container">
+
+
+        <div class="why-grid">
+
+
+            <div class="why-card">
+
+                <div>
+                    🧠
+                </div>
+
+                <h3>
+                    Think
+                </h3>
+
+                <p>
+                    Fun activities help
+                    children practice memory,
+                    logic, and problem-solving.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div>
+                    🎨
+                </div>
+
+                <h3>
+                    Create
+                </h3>
+
+                <p>
+                    Drawing gives kids a
+                    place to explore their
+                    imagination.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div>
+                    📖
+                </div>
+
+                <h3>
+                    Read
+                </h3>
+
+                <p>
+                    Short stories encourage
+                    children to practice
+                    reading.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div>
+                    ⭐
+                </div>
+
+                <h3>
+                    Explore
+                </h3>
+
+                <p>
+                    Every activity gives
+                    children something new
+                    to discover.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div>
+                    🎉
+                </div>
+
+                <h3>
+                    Have Fun
+                </h3>
+
+                <p>
+                    Playful interactions
+                    make learning exciting.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div>
+                    🌱
+                </div>
+
+                <h3>
+                    Grow
+                </h3>
+
+                <p>
+                    Small challenges encourage
+                    kids to keep trying.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     TOAST
+========================= -->
+
+<div
+    id="toast"
+    class="toast">
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function showScreen(id){
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(screen => {
+
+            screen.classList.remove("active");
+
+        });
+
+
+    document
+        .getElementById(id)
+        .classList.add("active");
+
+
+    document
+        .querySelectorAll(".nav-btn")
+        .forEach(button => {
+
+            button.classList.remove("active");
+
+
+            if(button.dataset.screen === id){
+
+                button.classList.add("active");
+
+            }
+
+        });
+
+
+    document
+        .getElementById("nav")
+        .classList.remove("open");
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+function toggleMenu(){
+
+    document
+        .getElementById("nav")
+        .classList.toggle("open");
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function toast(message){
+
+    const box =
+        document.getElementById("toast");
+
+    box.textContent = message;
+
+    box.classList.add("show");
+
+
+    setTimeout(() => {
+
+        box.classList.remove("show");
+
+    },2200);
+
+}
+
+
+/* =========================
+   MEMORY GAME
+========================= */
+
+const animals = [
+
+    "🐶","🐶",
+    "🐱","🐱",
+    "🐸","🐸",
+    "🐼","🐼",
+    "🦊","🦊",
+    "🐵","🐵",
+    "🐰","🐰",
+    "🐯","🐯"
+
+];
+
+
+let firstCard = null;
+let secondCard = null;
+let lockBoard = false;
+let moves = 0;
+let matches = 0;
+
+
+function shuffle(array){
+
+    return array.sort(
+        () => Math.random() - .5
+    );
+
+}
+
+
+function startMemory(){
+
+    const grid =
+        document.getElementById(
+            "memoryGrid"
+        );
+
+
+    grid.innerHTML = "";
+
+
+    firstCard = null;
+    secondCard = null;
+    lockBoard = false;
+    moves = 0;
+    matches = 0;
+
+
+    document.getElementById(
+        "moves"
+    ).textContent = 0;
+
+
+    shuffle([...animals])
+        .forEach(animal => {
+
+            const card =
+                document.createElement(
+                    "button"
+                );
+
+
+            card.className =
+                "memory-card";
+
+
+            card.dataset.animal =
+                animal;
+
+
+            card.textContent =
+                "❓";
+
+
+            card.onclick = () =>
+                flipCard(card);
+
+
+            grid.appendChild(card);
+
+        });
+
+}
+
+
+function flipCard(card){
+
+    if(
+        lockBoard ||
+        card === firstCard ||
+        card.classList.contains("matched")
+    ){
+
+        return;
+
+    }
+
+
+    card.classList.add("open");
+
+    card.textContent =
+        card.dataset.animal;
+
+
+    if(!firstCard){
+
+        firstCard = card;
+
+        return;
+
+    }
+
+
+    secondCard = card;
+
+    moves++;
+
+
+    document.getElementById(
+        "moves"
+    ).textContent = moves;
+
+
+    checkMatch();
+
+}
+
+
+function checkMatch(){
+
+    const match =
+        firstCard.dataset.animal ===
+        secondCard.dataset.animal;
+
+
+    if(match){
+
+        firstCard.classList.add(
+            "matched"
+        );
+
+        secondCard.classList.add(
+            "matched"
+        );
+
+
+        matches++;
+
+
+        firstCard = null;
+        secondCard = null;
+
+
+        if(matches === 8){
+
+            setTimeout(() => {
+
+                toast(
+                    "🎉 Amazing! You found them all!"
+                );
+
+            },300);
+
+        }
+
+    }
+    else{
+
+        lockBoard = true;
+
+
+        setTimeout(() => {
+
+            firstCard.classList.remove(
+                "open"
+            );
+
+            secondCard.classList.remove(
+                "open"
+            );
+
+
+            firstCard.textContent =
+                "❓";
+
+            secondCard.textContent =
+                "❓";
+
+
+            firstCard = null;
+            secondCard = null;
+
+            lockBoard = false;
+
+        },800);
+
+    }
+
+}
+
+
+startMemory();
+
+
+
+/* =========================
+   DRAWING CANVAS
+========================= */
+
+const canvas =
+    document.getElementById(
+        "canvas"
+    );
+
+const ctx =
+    canvas.getContext("2d");
+
+
+let drawing = false;
+let color = "#17243d";
+let eraser = false;
+
+
+function resizeCanvas(){
+
+    const oldImage =
+        canvas.toDataURL();
+
+
+    canvas.width =
+        canvas.clientWidth *
+        devicePixelRatio;
+
+
+    canvas.height =
+        canvas.clientHeight *
+        devicePixelRatio;
+
+
+    ctx.scale(
+        devicePixelRatio,
+        devicePixelRatio
+    );
+
+
+    const image =
+        new Image();
+
+
+    image.onload = () => {
+
+        ctx.drawImage(
+            image,
+            0,
+            0,
+            canvas.clientWidth,
+            canvas.clientHeight
+        );
+
+    };
+
+
+    image.src = oldImage;
+
+}
+
+
+resizeCanvas();
+
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+function position(e){
+
+    const rect =
+        canvas.getBoundingClientRect();
+
+
+    return {
+
+        x:e.clientX - rect.left,
+
+        y:e.clientY - rect.top
+
+    };
+
+}
+
+
+canvas.addEventListener(
+    "pointerdown",
+    e => {
+
+        drawing = true;
+
+
+        const pos =
+            position(e);
+
+
+        ctx.beginPath();
+
+
+        ctx.moveTo(
+            pos.x,
+            pos.y
+        );
+
+    }
+);
+
+
+canvas.addEventListener(
+    "pointermove",
+    e => {
+
+        if(!drawing){
+            return;
+        }
+
+
+        const pos =
+            position(e);
+
+
+        ctx.lineWidth =
+            document.getElementById(
+                "brush"
+            ).value;
+
+
+        ctx.lineCap =
+            "round";
+
+
+        ctx.strokeStyle =
+            eraser
+            ? "#ffffff"
+            : color;
+
+
+        ctx.lineTo(
+            pos.x,
+            pos.y
+        );
+
+
+        ctx.stroke();
+
+    }
+);
+
+
+canvas.addEventListener(
+    "pointerup",
+    () => {
+
+        drawing = false;
+
+    }
+);
+
+
+canvas.addEventListener(
+    "pointerleave",
+    () => {
+
+        drawing = false;
+
+    }
+);
+
+
+function setColor(newColor){
+
+    color = newColor;
+
+    eraser = false;
+
+    toast(
+        "🎨 Color selected!"
+    );
+
+}
+
+
+function setEraser(){
+
+    eraser = true;
+
+    toast(
+        "🧽 Eraser selected!"
+    );
+
+}
+
+
+function clearCanvas(){
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    toast(
+        "✨ Canvas cleared!"
+    );
+
+}
+
+
+
+/* =========================
+   BRAIN BOOST
+========================= */
+
+const patterns = [
+
+    {
+        sequence:[
+            "🍎",
+            "🍌",
+            "🍎",
+            "🍌",
+            "🍎"
+        ],
+
+        answer:"🍌",
+
+        choices:[
+            "🍌",
+            "🍇",
+            "🍎"
+        ]
+    },
+
+
+    {
+        sequence:[
+            "⭐",
+            "🌙",
+            "⭐",
+            "🌙",
+            "⭐"
+        ],
+
+        answer:"🌙",
+
+        choices:[
+            "☀️",
+            "🌙",
+            "⭐"
+        ]
+    },
+
+
+    {
+        sequence:[
+            "🐶",
+            "🐱",
+            "🐶",
+            "🐱",
+            "🐶"
+        ],
+
+        answer:"🐱",
+
+        choices:[
+            "🐸",
+            "🐱",
+            "🐶"
+        ]
+    },
+
+
+    {
+        sequence:[
+            "🔵",
+            "🔴",
+            "🔵",
+            "🔴",
+            "🔵"
+        ],
+
+        answer:"🔴",
+
+        choices:[
+            "🟢",
+            "🔵",
+            "🔴"
+        ]
+    }
+
+];
+
+
+let brainRound = 0;
+let brainScore = 0;
+
+
+function loadPattern(){
+
+    const current =
+        patterns[brainRound];
+
+
+    const pattern =
+        document.getElementById(
+            "pattern"
+        );
+
+
+    const answers =
+        document.getElementById(
+            "answers"
+        );
+
+
+    const feedback =
+        document.getElementById(
+            "feedback"
+        );
+
+
+    feedback.textContent = "";
+
+
+    pattern.innerHTML = "";
+
+
+    current.sequence
+        .forEach(item => {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.className =
+                "pattern-item";
+
+
+            div.textContent =
+                item;
+
+
+            pattern.appendChild(div);
+
+        });
+
+
+    const question =
+        document.createElement(
+            "div"
+        );
+
+
+    question.className =
+        "pattern-item question";
+
+
+    question.textContent = "?";
+
+
+    pattern.appendChild(
+        question
+    );
+
+
+    answers.innerHTML = "";
+
+
+    current.choices
+        .forEach(choice => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "answer";
+
+
+            button.textContent =
+                choice;
+
+
+            button.onclick = () =>
+                checkPattern(choice);
+
+
+            answers.appendChild(
+                button
+            );
+
+        });
+
+}
+
+
+function checkPattern(choice){
+
+    const current =
+        patterns[brainRound];
+
+
+    const feedback =
+        document.getElementById(
+            "feedback"
+        );
+
+
+    if(
+        choice === current.answer
+    ){
+
+        brainScore++;
+
+
+        document.getElementById(
+            "brainScore"
+        ).textContent =
+            brainScore;
+
+
+        feedback.textContent =
+            "🎉 Great thinking! That's correct!";
+
+
+        brainRound++;
+
+
+        if(
+            brainRound >= patterns.length
+        ){
+
+            setTimeout(() => {
+
+                feedback.textContent =
+                    "🏆 You finished all the patterns!";
+
+
+                brainRound = 0;
+
+            },700);
+
+        }
+        else{
+
+            setTimeout(
+                loadPattern,
+                800
+            );
+
+        }
+
+    }
+    else{
+
+        feedback.textContent =
+            "🌱 Almost! Look at the pattern again.";
+
+    }
+
+}
+
+
+loadPattern();
+
+
+
+/* =========================
+   READING ROOM
+========================= */
+
+const stories = [
+
+    {
+        title:"Milo and the Little Seed",
+
+        text:"Milo found a tiny seed beside his window. He planted it in a small pot and gave it water every morning. After many days, a little green leaf appeared. Milo smiled because he learned that good things need time to grow."
+    },
+
+
+    {
+        title:"The Blue Umbrella",
+
+        text:"Lia had a bright blue umbrella. One rainy afternoon, she saw a small puppy hiding under a tree. Lia opened her umbrella and shared it with the puppy. Together, they walked home through the rain."
+    },
+
+
+    {
+        title:"Nina's Missing Crayon",
+
+        text:"Nina wanted to draw a rainbow, but she could not find her blue crayon. She looked under the table and inside her bag. Her friend Sam helped her search. They found the crayon beside the window and finished the rainbow together."
+    },
+
+
+    {
+        title:"The Brave Little Ant",
+
+        text:"A little ant saw a large crumb on the ground. It was too heavy to carry alone. The ant called its friends. Together, they pushed the crumb all the way home. The ants learned that teamwork can make hard things easier."
+    },
+
+
+    {
+        title:"The Cloud That Looked Like a Bear",
+
+        text:"Tom lay on the grass and watched the clouds. One cloud looked like a rabbit. Another looked like a fish. Then he saw a big cloud shaped like a bear. Tom laughed and imagined the bear was dancing in the sky."
+    },
+
+
+    {
+        title:"Pia's Tiny Garden",
+
+        text:"Pia planted flowers in her backyard. She planted yellow flowers, pink flowers, and one tiny purple flower. Every afternoon, she checked the plants. Soon, butterflies visited her garden. Pia felt happy because her little garden had become a home for them."
+    },
+
+
+    {
+        title:"The Lost Star",
+
+        text:"One evening, a little star fell behind a tall hill. The moon noticed that the star was missing. She shone her light across the hill. The little star followed the light and returned to the night sky."
+    },
+
+
+    {
+        title:"Ben's Big Idea",
+
+        text:"Ben wanted to build something special. He collected cardboard, paper, and tape. After many tries, he made a small cardboard house. It was not perfect, but Ben was proud because he made it with his own hands."
+    },
+
+
+    {
+        title:"The Friendly Fish",
+
+        text:"A small fish named Finn lived near a coral reef. Every day, he greeted the other fish. One day, a new fish arrived and felt lonely. Finn invited the new fish to play. Soon, they became good friends."
+    },
+
+
+    {
+        title:"The Magic Library",
+
+        text:"Ella loved visiting the library. One afternoon, she opened a book about forests. As she read, she imagined tall trees, singing birds, and tiny animals. Ella discovered that books can take us to wonderful places without leaving our chair."
+    }
+
+];
+
+
+function loadStories(){
+
+    const box =
+        document.getElementById(
+            "stories"
+        );
+
+
+    stories.forEach(
+        (story,index) => {
+
+            const article =
+                document.createElement(
+                    "article"
+                );
+
+
+            article.className =
+                "story";
+
+
+            article.innerHTML = `
+
+                <span class="story-number">
+                    Story ${index + 1}
+                </span>
+
+                <h3>
+                    ${story.title}
+                </h3>
+
+                <p>
+                    ${story.text}
+                </p>
+
+                <button
+                    class="read-btn"
+                    onclick="readStory(${index})">
+
+                    🔊 Read Aloud
+
+                </button>
+
+            `;
+
+
+            box.appendChild(
+                article
+            );
+
+        }
+    );
+
+}
+
+
+function readStory(index){
+
+    const story =
+        stories[index];
+
+
+    if(
+        "speechSynthesis"
+        in window
+    ){
+
+        speechSynthesis.cancel();
+
+
+        const speech =
+            new SpeechSynthesisUtterance(
+                story.title +
+                ". " +
+                story.text
+            );
+
+
+        speech.rate = .85;
+
+        speech.pitch = 1.1;
+
+
+        speechSynthesis.speak(
+            speech
+        );
+
+
+        toast(
+            "🔊 Reading " +
+            story.title
+        );
+
+    }
+    else{
+
+        toast(
+            "Your browser does not support Read Aloud."
+        );
+
+    }
+
+}
+
+
+loadStories();
+
+
+</script>
+
+</body>
+</html>
+```
